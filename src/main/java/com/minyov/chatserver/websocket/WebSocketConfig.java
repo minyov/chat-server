@@ -12,7 +12,7 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 @EnableWebSocket
 public class WebSocketConfig implements WebSocketConfigurer {
 
-    private static final String PATH = "/api";
+    private static final String PATH = "/websocket";
 
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
