@@ -1,5 +1,7 @@
 package com.minyov.chatserver.database.domain;
 
+import com.google.gson.annotations.Expose;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,16 +11,22 @@ import java.util.UUID;
 @Table(name = "C_USER")
 public class UserEntity extends AbstractEntity {
 
+    @Expose
     @Column(name = "C_NAME", nullable = false)
     private String name;
 
     @Column(name = "C_PASSWORD", nullable = false)
     private String password;
 
+    @Expose
     @Column(name = "C_EMAIL", nullable = false)
     private String email;
 
-    @ManyToMany
+    @Expose
+    @Column(name = "C_PHOTO")
+    private String photo;
+
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "T_FRIENDS",
             joinColumns = @JoinColumn(name = "C_PERSON_ID", nullable = false),
@@ -26,7 +34,7 @@ public class UserEntity extends AbstractEntity {
     )
     private List<UserEntity> friends = new ArrayList<>();
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "T_FRIENDS",
             joinColumns = @JoinColumn(name = "C_FRIEND_ID", nullable = false),
@@ -72,6 +80,14 @@ public class UserEntity extends AbstractEntity {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     public List<UserEntity> getFriends() {

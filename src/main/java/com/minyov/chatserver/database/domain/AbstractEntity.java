@@ -1,6 +1,7 @@
 package com.minyov.chatserver.database.domain;
 
 
+import com.google.gson.annotations.Expose;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.GeneratedValue;
@@ -11,6 +12,7 @@ import java.util.UUID;
 @MappedSuperclass
 public class AbstractEntity {
 
+    @Expose
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
