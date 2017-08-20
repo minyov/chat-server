@@ -1,7 +1,8 @@
-package com.minyov.chatserver.websocket.handlers;
+package com.minyov.chatserver.rest;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.minyov.chatserver.database.dao.MessageDao;
 import com.minyov.chatserver.database.dao.UserDao;
 import com.minyov.chatserver.database.domain.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,9 @@ public class RestService {
 
     @Autowired
     private UserDao userDao;
+
+    @Autowired
+    private MessageDao messageDao;
 
     @RequestMapping("/save")
     public void save() {
@@ -72,5 +76,13 @@ public class RestService {
     @RequestMapping(value = "/getFriends/{userName}", method = RequestMethod.GET)
     public ResponseEntity<String> getFriends(@PathVariable("userName") String name) {
         return new ResponseEntity<>(gson.toJson(userDao.getFriends(name)), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/getMessages",
+                    method = RequestMethod.GET,
+                    params = { "senderName", "receiverName" })
+    public ResponseEntity<String> getMessages(@RequestParam("senderName") String senderName,
+                                              @RequestParam("receiverName") String receiverName) {
+        return new ResponseEntity<>(gson.toJson(messageDao.getMessages(senderName, receiverName)), HttpStatus.OK);
     }
 }

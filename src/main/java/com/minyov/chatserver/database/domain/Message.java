@@ -16,9 +16,9 @@ public class Message extends AbstractEntity {
     private UserEntity sender;
 
     @Expose
-    @JoinColumn(name = "C_RECIEVER", nullable = false)
+    @JoinColumn(name = "c_receiver", nullable = false)
     @ManyToOne
-    private UserEntity reciever;
+    private UserEntity receiver;
 
     @Expose
     @Column(name = "C_TEXT", nullable = false)
@@ -33,18 +33,21 @@ public class Message extends AbstractEntity {
     @Column(name = "C_READ", nullable = false)
     private Boolean read;
 
-    public Message(UserEntity sender, UserEntity reciever, String text, Date date, Boolean read) {
+    public Message() {
+    }
+
+    public Message(UserEntity sender, UserEntity receiver, String text, Date date, Boolean read) {
         this.sender = sender;
-        this.reciever = reciever;
+        this.receiver = receiver;
         this.text = text;
         this.date = date;
         this.read = read;
     }
 
-    public Message(UUID id, UserEntity sender, UserEntity reciever, String text, Date date, Boolean read) {
+    public Message(UUID id, UserEntity sender, UserEntity receiver, String text, Date date, Boolean read) {
         super(id);
         this.sender = sender;
-        this.reciever = reciever;
+        this.receiver = receiver;
         this.text = text;
         this.date = date;
         this.read = read;
@@ -58,12 +61,12 @@ public class Message extends AbstractEntity {
         this.sender = sender;
     }
 
-    public UserEntity getReciever() {
-        return reciever;
+    public UserEntity getReceiver() {
+        return receiver;
     }
 
-    public void setReciever(UserEntity reciever) {
-        this.reciever = reciever;
+    public void setReceiver(UserEntity reciever) {
+        this.receiver = reciever;
     }
 
     public String getText() {
