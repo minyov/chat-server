@@ -4,10 +4,10 @@ import com.minyov.chatserver.database.domain.Message;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.CriteriaSpecification;
 import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -19,6 +19,7 @@ public class MessageDao extends AbstractDao<Message> {
 
     public void saveMessage(Message message, boolean isRead) {
         message.setRead(isRead);
+        message.setDate(new Date());
 
         persist(message);
     }
