@@ -85,4 +85,11 @@ public class RestService {
                                               @RequestParam("receiverName") String receiverName) {
         return new ResponseEntity<>(gson.toJson(messageDao.getMessages(senderName, receiverName)), HttpStatus.OK);
     }
+
+    @RequestMapping(value = "/login",
+            method = RequestMethod.GET,
+            params = { "userName" })
+    public ResponseEntity<String> login(@RequestParam("userName") String userName) {
+        return new ResponseEntity<>(gson.toJson(userDao.getByName(userName.toLowerCase())), HttpStatus.OK);
+    }
 }

@@ -7,6 +7,8 @@ import com.minyov.chatserver.database.dao.MessageDao;
 import com.minyov.chatserver.database.dao.UserDao;
 import com.minyov.chatserver.database.domain.Message;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
@@ -15,6 +17,7 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+@EnableScheduling
 @Component
 public class MessageService {
 
@@ -41,6 +44,20 @@ public class MessageService {
         sessions.put(name, session);
     }
 
+    public void unRegisterClient(WebSocketSession session) {
+        String nameToRemove = null;
+        for (Map.Entry<String, WebSocketSession> entry : sessions.entrySet()) {
+            if (entry.getValue().equals(session)) {
+                nameToRemove = entry.getKey();
+                break;
+            }
+        }
+
+        if (nameToRemove != null) {
+            sessions.remove(nameToRemove);
+        }
+    }
+
     public void sendMessage(String jsonMessage) throws JsonSyntaxException, IOException {
         Message message = gson.fromJson(jsonMessage, Message.class);
 
@@ -60,5 +77,10 @@ public class MessageService {
 
     private boolean isUserOnline(String name) {
         return sessions.containsKey(name);
+    }
+
+    @Scheduled(fixedRate = 5000)
+    private void sessionsCount() {
+        System.out.println(sessions.size());
     }
 }

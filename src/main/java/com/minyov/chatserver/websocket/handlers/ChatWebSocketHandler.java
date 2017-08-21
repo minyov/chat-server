@@ -44,6 +44,8 @@ public class ChatWebSocketHandler implements WebSocketHandler {
     public void afterConnectionClosed(WebSocketSession session, CloseStatus closeStatus) throws Exception {
         logger.trace("Session with " + session.getRemoteAddress().getHostName() + " closed. Reason: " +
                             closeStatus.getReason());
+
+        messageService.unRegisterClient(session);
     }
 
     @Override
