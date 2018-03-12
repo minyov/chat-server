@@ -40,4 +40,12 @@ public class UserDao extends AbstractDao<UserEntity> {
 
         return false;
     }
+
+    public void setSubscriber(String name) {
+        UserEntity user = getByName(name);
+
+        user.setSubscriber(true);
+
+        persist(user);
+    }
 }

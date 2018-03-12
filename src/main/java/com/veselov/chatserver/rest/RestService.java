@@ -107,9 +107,9 @@ public class RestService {
 
     @RequestMapping(value = "/sub/{userName}",
             method = RequestMethod.POST)
-    public ResponseEntity<String> subscribe((@PathVariable("userName") String name) {
-        UserDao user = userDao.getByName(name);
-        user.setSubscriber(true);
-        return new ResponseEntity<>(gson.toJson(user), HttpStatus.OK);
+    public ResponseEntity<String> subscribe(@PathVariable("userName") String name) {
+        userDao.setSubscriber(name);
+
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

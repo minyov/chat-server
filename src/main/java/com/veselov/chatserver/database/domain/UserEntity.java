@@ -116,7 +116,7 @@ public class UserEntity extends AbstractEntity {
         return subscriber;
     }
 
-    public Boolean setSubscriber(Bool subscriber) {
+    public void setSubscriber(Boolean subscriber) {
         this.subscriber = subscriber;
     }
 }
