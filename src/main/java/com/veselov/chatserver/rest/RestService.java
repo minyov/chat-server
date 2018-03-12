@@ -104,4 +104,12 @@ public class RestService {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
+
+    @RequestMapping(value = "/sub/{userName}",
+            method = RequestMethod.POST)
+    public ResponseEntity<String> subscribe((@PathVariable("userName") String name) {
+        UserDao user = userDao.getByName(name);
+        user.setSubscriber(true);
+        return new ResponseEntity<>(gson.toJson(user), HttpStatus.OK);
+    }
 }

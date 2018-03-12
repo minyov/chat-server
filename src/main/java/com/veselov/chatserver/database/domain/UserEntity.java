@@ -26,6 +26,10 @@ public class UserEntity extends AbstractEntity {
     @Column(name = "C_PHOTO")
     private String photo;
 
+    @Expose
+    @Column(name = "C_SUBSCRIBER")
+    private Boolean subscriber;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "T_FRIENDS",
@@ -49,6 +53,7 @@ public class UserEntity extends AbstractEntity {
         this.name = name;
         this.password = password;
         this.email = email;
+        this.subscriber = false;
     }
 
     public UserEntity(UUID id, String name, String password, String email) {
@@ -56,6 +61,7 @@ public class UserEntity extends AbstractEntity {
         this.name = name;
         this.password = password;
         this.email = email;
+        this.subscriber = false;
     }
 
     public String getName() {
@@ -104,5 +110,13 @@ public class UserEntity extends AbstractEntity {
 
     public void setFriendOf(List<UserEntity> friendOf) {
         this.friendOf = friendOf;
+    }
+
+    public Boolean getSubscriber() {
+        return subscriber;
+    }
+
+    public Boolean setSubscriber(Bool subscriber) {
+        this.subscriber = subscriber;
     }
 }
