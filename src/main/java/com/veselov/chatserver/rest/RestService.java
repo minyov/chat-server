@@ -92,4 +92,16 @@ public class RestService {
     public ResponseEntity<String> login(@RequestParam("userName") String userName) {
         return new ResponseEntity<>(gson.toJson(userDao.getByName(userName.toLowerCase())), HttpStatus.OK);
     }
+
+    @RequestMapping(value = "/signup",
+            method = RequestMethod.POST)
+    public ResponseEntity<String> signUp(@RequestBody UserEntity body) {
+        boolean saved = userDao.save(body);
+
+        if (saved) {
+            return new ResponseEntity<>(HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
 }

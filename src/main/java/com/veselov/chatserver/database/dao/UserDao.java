@@ -30,4 +30,14 @@ public class UserDao extends AbstractDao<UserEntity> {
 
         return ((UserEntity)criteria.uniqueResult()).getFriends();
     }
+
+    public boolean save(UserEntity entity) {
+        if (getByName(entity.getName()) == null) {
+            persist(entity);
+
+            return true;
+        }
+
+        return false;
+    }
 }
