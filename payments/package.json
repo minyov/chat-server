@@ -1,0 +1,17 @@
+{
+  "name": "chat-payments",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "backpack",
+    "build": "backpack build"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "backpack-core": "^0.7.0",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "node-fetch": "^2.1.1"
+  }
+}
