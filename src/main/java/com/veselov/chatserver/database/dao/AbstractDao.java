@@ -1,4 +1,4 @@
-package com.minyov.chatserver.database.dao;
+package com.veselov.chatserver.database.dao;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;

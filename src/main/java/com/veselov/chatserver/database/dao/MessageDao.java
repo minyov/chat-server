@@ -1,6 +1,6 @@
-package com.minyov.chatserver.database.dao;
+package com.veselov.chatserver.database.dao;
 
-import com.minyov.chatserver.database.domain.Message;
+import com.veselov.chatserver.database.domain.Message;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.CriteriaSpecification;
 import org.hibernate.criterion.Order;

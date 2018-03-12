@@ -1,6 +1,6 @@
-package com.minyov.chatserver.websocket.config;
+package com.veselov.chatserver.websocket.config;
 
-import com.minyov.chatserver.websocket.handlers.ChatWebSocketHandler;
+import com.veselov.chatserver.websocket.handlers.ChatWebSocketHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.WebSocketHandler;

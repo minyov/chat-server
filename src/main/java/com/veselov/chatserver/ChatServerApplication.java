@@ -1,6 +1,6 @@
-package com.minyov.chatserver;
+package com.veselov.chatserver;
 
-import com.minyov.chatserver.database.DatabaseConfig;
+import com.veselov.chatserver.database.DatabaseConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -34,7 +34,7 @@ public class ChatServerApplication extends SpringBootServletInitializer {
 
 		entityManagerFactoryBean.setDataSource(databaseConfig.dataSource());
 		entityManagerFactoryBean.setJpaVendorAdapter(databaseConfig.jpaVendorAdapter());
-		entityManagerFactoryBean.setPackagesToScan("com.minyov.*");
+		entityManagerFactoryBean.setPackagesToScan("com.veselov.*");
 		entityManagerFactoryBean.setPersistenceUnitName("chat-server");
 
 		return entityManagerFactoryBean;

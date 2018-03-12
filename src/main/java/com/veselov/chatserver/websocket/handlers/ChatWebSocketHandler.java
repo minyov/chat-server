@@ -1,7 +1,7 @@
-package com.minyov.chatserver.websocket.handlers;
+package com.veselov.chatserver.websocket.handlers;
 
 import com.google.gson.JsonSyntaxException;
-import com.minyov.chatserver.database.domain.Message;
+import com.veselov.chatserver.database.domain.Message;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

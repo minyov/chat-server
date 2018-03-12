@@ -1,10 +1,10 @@
-package com.minyov.chatserver.rest;
+package com.veselov.chatserver.rest;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.minyov.chatserver.database.dao.MessageDao;
-import com.minyov.chatserver.database.dao.UserDao;
-import com.minyov.chatserver.database.domain.UserEntity;
+import com.veselov.chatserver.database.dao.MessageDao;
+import com.veselov.chatserver.database.dao.UserDao;
+import com.veselov.chatserver.database.domain.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,39 +33,39 @@ public class RestService {
 
     @RequestMapping("/save")
     public void save() {
-//        UserEntity user1 = new UserEntity("goga", "test", "test@test.ru");
-//        userDao.persist(user1);
-//        UserEntity user2 = new UserEntity("server", "test", "test@test.ru");
-//        user2.setPhoto("/Users/minyov/Documents/workspace/chat_client/src/img/img.jpg");
-//        userDao.persist(user2);
-//        UserEntity user2 = new UserEntity("test", "test", "test@test.ru");
+        UserEntity user1 = new UserEntity("goga", "test", "test@test.ru");
+        userDao.persist(user1);
+        UserEntity user2 = new UserEntity("server", "test", "test@test.ru");
+        user2.setPhoto("/Users/veselov/Documents/workspace/chat_client/src/img/img.jpg");
+        userDao.persist(user2);
+        UserEntity user3 = new UserEntity("veselov", "test", "test@test.ru");
 //        UserEntity user3 = new UserEntity("test", "test", "test@test.ru");
-//
-//
-//
-//        userDao.persist(user1);
-//        userDao.persist(user2);
-//        userDao.persist(user3);
 
-//        List<UserEntity> users = userDao.getAll();
-//
-//        List<UserEntity> user1Friends = new ArrayList<>();
-//        user1Friends.add(users.get(1));
-//        user1Friends.add(users.get(2));
-//        users.get(0).setFriends(user1Friends);
-//
-//        userDao.persist(users.get(0));
 
-//        UserEntity minyov = userDao.getByName("minyov");
-//        UserEntity goga = userDao.getByName("goga");
-//        UserEntity server = userDao.getByName("server");
-//
-//        ArrayList<UserEntity> list = new ArrayList<>();
-//        list.add(goga);
-//        list.add(server);
-//        minyov.setFriends(list);
-//
-//        userDao.persist(minyov);
+
+        userDao.persist(user1);
+        userDao.persist(user2);
+        userDao.persist(user3);
+
+        List<UserEntity> users = userDao.getAll();
+
+        List<UserEntity> user1Friends = new ArrayList<>();
+        user1Friends.add(users.get(1));
+        user1Friends.add(users.get(2));
+        users.get(0).setFriends(user1Friends);
+
+        userDao.persist(users.get(0));
+
+        UserEntity veselov = userDao.getByName("veselov");
+        UserEntity goga = userDao.getByName("goga");
+        UserEntity server = userDao.getByName("server");
+
+        ArrayList<UserEntity> list = new ArrayList<>();
+        list.add(goga);
+        list.add(server);
+        veselov.setFriends(list);
+
+        userDao.persist(veselov);
     }
 
     @RequestMapping(value = "/getUser/{userName}", method = RequestMethod.GET)

@@ -1,11 +1,11 @@
-package com.minyov.chatserver.websocket.handlers;
+package com.veselov.chatserver.websocket.handlers;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
-import com.minyov.chatserver.database.dao.MessageDao;
-import com.minyov.chatserver.database.dao.UserDao;
-import com.minyov.chatserver.database.domain.Message;
+import com.veselov.chatserver.database.dao.MessageDao;
+import com.veselov.chatserver.database.dao.UserDao;
+import com.veselov.chatserver.database.domain.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;

@@ -1,4 +1,4 @@
-package com.minyov.chatserver.database;
+package com.veselov.chatserver.database;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

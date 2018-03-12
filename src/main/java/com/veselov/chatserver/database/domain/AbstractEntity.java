@@ -1,4 +1,4 @@
-package com.minyov.chatserver.database.domain;
+package com.veselov.chatserver.database.domain;
 
 
 import com.google.gson.annotations.Expose;
